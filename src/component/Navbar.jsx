@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
-import { IoMdHome } from "react-icons/io";
 import { FaSave } from "react-icons/fa";
 import { IoIosSave } from "react-icons/io";
 import { CiSquarePlus } from "react-icons/ci";
+import { IoSearch } from "react-icons/io5";
 
 const Navbar = () => {
   const [Width, setWidth] = useState("6%");
   const [ftext , setfText] = useState("");
+  const [stext , setsText] = useState("");
+  const [ttext , settText] = useState("");
+  const [fotext , setfoText] = useState("");
 
   const handleClick = () => {
-    setWidth(prevWidth => (prevWidth === "23%" ? "6%" : "23%"));
+    setWidth(prevWidth => (prevWidth === "18%" ? "6%" : "18%"));
     setfText(prevText => (prevText === "New Note" ? "" : "New Note"))
+    setsText(prevText => (prevText === "Search" ? "" : "Search"))
+    settText(prevText => (prevText === "Save" ? "" : "Save"))
+    setfoText(prevText => (prevText === "Saved Files" ? "" : "Saved Files"))
   };
 
   return (
@@ -20,14 +26,25 @@ const Navbar = () => {
                 <h1 className='text-2xl'>N</h1>
             </div>
         </div>
-        <div className='flex flex-col w-full h-[80%] items-center'>
-            <div className='flex gap-2 '>
-                <CiSquarePlus className='text-white mb-3 mt-8 text-[35px]' />
-                {ftext && <div className='flex items-center text-white mb-3 mt-8 text-[18px]'>{ftext}</div>}
+        <div className='flex justify-content'>
+            <div className='flex flex-col w-full h-[80%]'>
+                <div className='flex gap-3 w-full '>
+                    <CiSquarePlus className='text-white mb-3 mt-8 text-[35px]' />
+                    {ftext && <div className='flex text-white mb-3 mt-8 text-[18px]'>{ftext}</div>}
+                </div>
+                <div className='flex gap-3 items-center  '>
+                    <IoSearch className='text-white  my-5 text-3xl' />
+                    {stext && <div className='flex item-center text-white text-[18px]'>{stext}</div>}
+                </div>
+                <div className='flex gap-3 '>
+                    <FaSave className='text-white my-5 text-[28px]' />
+                    {ttext && <div className='flex items-center text-white text-[18px]'>{ttext}</div>}
+                </div>
+                <div className='flex gap-3 '>
+                    <IoIosSave className='text-white my-5 text-3xl' />
+                    {fotext && <div className='flex items-center text-white text-[18px]'>{fotext}</div>}
+                </div>
             </div>
-            <IoMdHome className='text-white my-5 text-4xl' />
-            <FaSave className='text-white my-5 text-[28px]' />
-            <IoIosSave className='text-white my-5 text-3xl' />
         </div>
     </div>
   );
